@@ -3,7 +3,7 @@ import { registerService, loginService, forgotPasswordService, resetPasswordServ
 import transporter from '../utils/nodemailer';
 
 export const register = async (req: Request, res: Response) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password, role = "user" } = req.body;
 
   try {
     const { token, refreshToken } = await registerService(name, email, password, role);

@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import { User } from '../models/User';
 
-export const createUserService = async (name: string, email: string, password: string, role: string) => {
+export const createUserService = async (name: string, email: string, password: string, role: string = "user") => {
   const existingUser = await User.findOne({ where: { email } });
   if (existingUser) {
     throw new Error('Email already in use');
